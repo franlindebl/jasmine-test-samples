@@ -46,8 +46,9 @@ export class ContactsServiceService {
     return this.contacts;
   }
 
+  // TODO: mejorar esta función para que elimine por ID
   public removeContactToList(contact: Contact): Contact[] {
-    this.contacts.push(contact);
+    this.contacts = this.contacts.splice(this.contacts.indexOf(contact), 1);
     return this.contacts;
   }
 }
