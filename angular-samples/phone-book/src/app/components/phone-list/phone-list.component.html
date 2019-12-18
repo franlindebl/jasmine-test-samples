@@ -15,7 +15,7 @@
 </table>
 
 <h2>Añadir contacto:</h2>
-<form class="new-contact-form" *ngIf="newContactFormGroup" [formGroup]="newContactFormGroup" (ngSubmit)="onNewContactSubmit()">
+<form class="new-contact-form" *ngIf="newContactFormGroup !== null" [formGroup]="newContactFormGroup" (ngSubmit)="onNewContactSubmit()">
     <div class="new-contact-form__row">
         <label>
             Nombre:
