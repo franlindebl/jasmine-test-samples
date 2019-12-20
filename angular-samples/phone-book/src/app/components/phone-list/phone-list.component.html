@@ -6,7 +6,7 @@
             <th class="phone-table__column-name">Teléfono</th>
         </tr>
     </thead>
-    <tbody class="phone-table__body">
+    <tbody data-e2e="contact-list-body" class="phone-table__body">
         <tr *ngFor="let contact of contactList">
             <td class="phone-table__cell">{{ contact.name }}</td>
             <td class="phone-table__cell">{{ contact.phone }}</td>
@@ -19,14 +19,14 @@
     <div class="new-contact-form__row">
         <label>
             Nombre:
-            <input type="text" formControlName="name">
+            <input data-e2e="name-input" type="text" formControlName="name">
         </label>
     </div>
     <div class="new-contact-form__row">
         <label>
             Teléfono:
-            <input type="number" formControlName="phone">
+            <input data-e2e="phone-input" type="number" formControlName="phone">
         </label>
     </div>
-    <button type="submit">Guardar</button>
+    <button data-e2e="save-contact-button" type="submit">Guardar</button>
 </form>

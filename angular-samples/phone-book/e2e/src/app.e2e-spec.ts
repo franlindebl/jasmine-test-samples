@@ -10,7 +10,22 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('phone-book app is running!');
+    expect(page.getTitleText()).toEqual('Hola!!');
+  });
+
+  it('fran should be the first contact in list', () => {
+    page.navigateTo();
+    expect(page.getFirstNameInContactList()).toEqual('Fran');
+  });
+
+  it('new contact should be created and listed', () => {
+    page.navigateTo();
+
+    page.setInputNameValue('Maria Victoria');
+    page.setInputPhoneValue(123123123);
+    page.sendContactFormByClickingButton();
+
+    expect(page.getLastNameInContactList()).toEqual('Maria Victoria');
   });
 
   afterEach(async () => {
@@ -19,5 +34,8 @@ describe('workspace-project App', () => {
     expect(logs).not.toContain(jasmine.objectContaining({
       level: logging.Level.SEVERE,
     } as logging.Entry));
+
+    // FOR TESTING PURPOSES
+    // browser.sleep(2000);
   });
 });
