@@ -9,10 +9,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./phone-list.component.scss']
 })
 export class PhoneListComponent implements OnInit {
+  public contactsServiceForTesting: ContactsServiceService = null;
   public contactList: Contact[] = [];
   public newContactFormGroup: FormGroup = null;
 
-  constructor(private contactsServiceService: ContactsServiceService) { }
+  constructor(private contactsServiceService: ContactsServiceService) {
+    this.contactsServiceForTesting = contactsServiceService;
+  }
 
   ngOnInit() {
     // Pedimos la lista de contactos

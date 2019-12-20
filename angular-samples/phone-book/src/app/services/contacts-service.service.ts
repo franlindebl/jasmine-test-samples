@@ -5,20 +5,16 @@ import { Contact } from '../models/contact';
   providedIn: 'root'
 })
 export class ContactsServiceService {
-  private contacts: Contact[] = [{
-    id: 1,
+  private contactList: Contact[] = [{
     name: 'Fran',
     phone: 666555444,
   }, {
-    id: 2,
     name: 'Abel',
     phone: 666555444,
   }, {
-    id: 3,
     name: 'Jesús',
     phone: 666555444,
   }, {
-    id: 4,
     name: 'David',
     phone: 666555444,
   }, ];
@@ -26,29 +22,22 @@ export class ContactsServiceService {
   constructor() { }
 
   public getContactList(): Contact[] {
-    return this.contacts;
+    return this.contactList;
   }
 
   public addContactToList(name: string, phone: number): Contact[] {
-    let newContactId = 1;
-
-    if (this.contacts.length) {
-      newContactId = this.contacts[this.contacts.length - 1].id + 1;
-    }
-
     const contact: Contact = {
-      id: newContactId,
       name,
       phone,
     };
-    this.contacts.push(contact);
+    this.contactList.push(contact);
 
-    return this.contacts;
+    return this.contactList;
   }
 
   // TODO: mejorar esta función para que elimine por ID
   public removeContactToList(contact: Contact): Contact[] {
-    this.contacts = this.contacts.splice(this.contacts.indexOf(contact), 1);
-    return this.contacts;
+    this.contactList = this.contactList.splice(this.contactList.indexOf(contact), 1);
+    return this.contactList;
   }
 }

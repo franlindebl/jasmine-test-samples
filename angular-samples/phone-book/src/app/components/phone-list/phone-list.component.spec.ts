@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { PhoneListComponent } from './phone-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PhoneListComponent } from './phone-list.component';
 
 describe('PhoneListComponent', () => {
   let component: PhoneListComponent;
@@ -11,11 +11,12 @@ describe('PhoneListComponent', () => {
       declarations: [
         PhoneListComponent,
       ],
+      providers: [
+      ],
       imports: [
         ReactiveFormsModule,
-      ]
-    })
-      .compileComponents();
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -27,4 +28,19 @@ describe('PhoneListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('saveContact should save when inputs are OK', () => {
+    // Relleno el formulario
+    component.newContactFormGroup.get('phone').setValue(123);
+    component.newContactFormGroup.get('name').setValue('Test name');
+
+    component.onNewContactSubmit();
+
+    // @ts-ignore
+    expect(component.contactsServiceForTesting.contactList).toContain({
+      name: 'Test name',
+      phone: 123
+    });
+  });
 });
+
